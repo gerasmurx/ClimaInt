@@ -83,6 +83,10 @@ function renderCiudad(response) {
   let imgs = response.data.weather[0].main;
   let localizacion = response.data.name;
   let visibilidad = ((response.data.visibility)/1000).toFixed(1);
+  let velocidadVientos = Math.round(response.data.wind.speed);
+  if(unidadesConsulta == "imperial"){
+    velocidadVientos = Math.round(velocidadVientos*0.45);
+  }
   document.getElementById("hero1").src=`./weather-app-master/${imgs}.png`;
 
   document.getElementById("locacion").innerHTML = localizacion;
@@ -91,9 +95,7 @@ function renderCiudad(response) {
   );
 
   document.getElementById("humedad-rel").innerHTML = humedad;
-  document.getElementById("vientos").innerHTML = Math.round(
-    response.data.wind.speed
-  );
+  document.getElementById("vientos").innerHTML = velocidadVientos
   document.getElementById("tipo-clima").innerHTML =
     response.data.weather[0].description;
   
