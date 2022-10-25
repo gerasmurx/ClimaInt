@@ -214,6 +214,7 @@ a.article:hover {
     padding-top: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+    overflow: hidden !important;
 }
 
 .fondoNubes{
@@ -229,7 +230,6 @@ a.article:hover {
     top: 0;
     width: 550px;
     height: auto;
-    overflow: hidden;
 }
 
 .demo-contenido{
