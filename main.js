@@ -46,7 +46,7 @@ function formatDate(date) {
   // }
   let diaN = date.getDate();
 
-  let mesindex = date.getMonth()
+  let mesindex = date.getMonth();
   let meses = [
     "Ene",
     "Feb",
