@@ -95,9 +95,8 @@ function renderCiudad(response) {
   );
 
   document.getElementById("humedad-rel").innerHTML = humedad;
-  document.getElementById("vientos").innerHTML = velocidadVientos
-  document.getElementById("tipo-clima").innerHTML =
-    response.data.weather[0].description;
+  document.getElementById("vientos").innerHTML = velocidadVientos;
+  document.getElementById("tipo-clima").innerHTML = response.data.weather[0].description;
   
   document.getElementById("barra-humedad").style.width=`${humedad}%`;
   document.getElementById("visibilidad").innerHTML = visibilidad;
@@ -126,12 +125,12 @@ function filtrarForecast(response) {
 function renderForecast(array){
   let sum = 2;
   if (array.length > 5){
-    array.pop()
+    array.pop();
   }
 // ciclo para la escritura en el dom de los siguientes 4 dias en el forecast 
   for (let i = 1; i < array.length; i++) {
-    let tomorrow =  new Date()
-    tomorrow.setDate(currentTime.getDate() + sum)
+    let tomorrow =  new Date();
+    tomorrow.setDate(currentTime.getDate() + sum);
     let nuevoDia = (formatDate(tomorrow));
     document.getElementById(`caja${i}`).innerHTML = nuevoDia;
     sum++;
@@ -173,10 +172,10 @@ function geolocalizacion(event) {
 
 function Fahrenheit(event) {
   event.preventDefault();
-  unidadesConsulta = "imperial"
+  unidadesConsulta = "imperial";
   let apiKey = "e78144700f33f371e15b25a3c6695ccb";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${consultaActual}&appid=${apiKey}&units=imperial&lang=sp`;
-  faren.style.backgroundColor = "white"
+  faren.style.backgroundColor = "white";
   celcius.style.removeProperty("background-color");
   simbolTemp = "°F";
   for(var i = 0; i < unidadesTemp.length; i++){
@@ -187,7 +186,7 @@ function Fahrenheit(event) {
 
 function Celsius(event) {
   event.preventDefault();
-  unidadesConsulta = "metric"
+  unidadesConsulta = "metric";
   let apiKey = "e78144700f33f371e15b25a3c6695ccb";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${consultaActual}&appid=${apiKey}&units=metric&lang=sp`;
   celcius.style.backgroundColor = "white";
