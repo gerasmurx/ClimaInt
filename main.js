@@ -126,9 +126,14 @@ function filtrarForecast(response) {
 
 function renderForecast(array){
   let sum = 2;
-  if (array.length > 5){
-    array.pop();
+  for (let i = 0; i < (array.length+1); i++) {
+    if (array.length > 5){
+      array.pop();
+    }
   }
+  // if (array.length > 5){
+  //   array.pop();
+  // }
 // ciclo para la escritura en el dom de los siguientes 4 dias en el forecast 
   for (let i = 1; i < array.length; i++) {
     let tomorrow =  new Date();
