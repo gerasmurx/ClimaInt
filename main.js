@@ -84,6 +84,8 @@ function renderCiudad(response) {
   let localizacion = response.data.name;
   let visibilidad = ((response.data.visibility)/1000).toFixed(1);
   let velocidadVientos = Math.round(response.data.wind.speed);
+  let descripcionClima = (response.data.weather[0].description).toString();
+  descripcionClima = descripcionClima.charAt(0).toUpperCase() + descripcionClima.slice(1);
   if(unidadesConsulta == "imperial"){
     velocidadVientos = Math.round(velocidadVientos*0.45);
   }
@@ -96,7 +98,7 @@ function renderCiudad(response) {
 
   document.getElementById("humedad-rel").innerHTML = humedad;
   document.getElementById("vientos").innerHTML = velocidadVientos;
-  document.getElementById("tipo-clima").innerHTML = response.data.weather[0].description;
+  document.getElementById("tipo-clima").innerHTML = descripcionClima;
   
   document.getElementById("barra-humedad").style.width=`${humedad}%`;
   document.getElementById("visibilidad").innerHTML = visibilidad;
