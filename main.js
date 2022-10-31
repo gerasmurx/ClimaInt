@@ -16,6 +16,7 @@ let ciudad6 = document.getElementById("ciudad6");
 let simbolTemp = "°C";
 let consultaActual = "";
 let unidadesConsulta = "metric";
+let crrDia = new Date();
 
 // ------------------ Eventos especiales de tags -------------------
 locacionActual.addEventListener("click", geolocalizacion);
@@ -115,16 +116,27 @@ function consultaForecast(loc){
 
 function filtrarForecast(response) {
   let diaHoy = currentTime.getDate();
+  let suma = 1;
   let filteredList = response.data.list.filter((forecast)=>{
     if (parseInt(forecast.dt_txt.substr(8, 2)) != diaHoy){
-      diaHoy++;
+      diaHoy = sumaDias(suma);
+      suma++;
       return forecast;
     }
   })
   renderForecast(filteredList);
 }
 
+function sumaDias(sum){
+  let resultado = new Date();
+  resultado.setDate(currentTime.getDate() + sum);
+  resultado = resultado.getDate();
+  console.log(resultado);
+  return resultado
+}
+
 function renderForecast(array){
+  console.log(array);
   let sum = 2;
   for (let i = 0; i < (array.length+1); i++) {
     if (array.length > 5){
